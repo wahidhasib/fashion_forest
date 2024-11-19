@@ -1,6 +1,9 @@
 <?php include "config.php";
 include "header.php";
-session_start();
+
+if($_SESSION['role'] == 0) {
+    header("Location: $hostname/admin/profile.php");
+}
 ?>
 
 
@@ -55,6 +58,7 @@ session_start();
                             </td>
                             <td class="">
                                 <a href="<?= $hostname; ?>/admin/edit_user.php?id=<?= $row['uid']; ?>" class="btn btn-primary"><i class="fa-regular fa-pen-to-square"></i></a>
+                                
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     <i class="fa-solid fa-trash-can"></i>

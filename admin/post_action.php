@@ -3,6 +3,7 @@ include "config.php";
 
 if(isset($_GET['delpost'])) {
     $deleteId = $_GET['delpost'];
+    print_r($deleteId);
     $sql = "DELETE FROM products WHERE p_id = $deleteId;";
     $sql .= "UPDATE category SET total_post = total_post - 1";
     mysqli_multi_query($conn, $sql);
@@ -24,10 +25,7 @@ if(isset($_GET['delpost'])) {
         $size = $_FILES['pimage']['size'][$i];
         $tmp_name = $_FILES['pimage']['tmp_name'][$i];
 
-        echo "<pre>";
-        // print_r($file_name);
-        // var_dump($file_name);
-        echo "<pre>";
+        
         
     }
     $images = $file_name;

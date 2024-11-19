@@ -6,6 +6,11 @@ if(isset($_GET['id'])){
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 }
+
+if ($_SESSION['role'] == 0) {
+    header("Location: $hostname/admin/");
+}
+
 ?>
 <div class="container-fluid">
     <div class="row login-container justify-content-center align-items-center px-2">

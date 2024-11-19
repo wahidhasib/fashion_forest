@@ -121,26 +121,28 @@
     </div>
   </div>
 
+
+
+  <?php
+  $sql = "SELECT * FROM review LEFT JOIN users ON review.a_id = users.uid ORDER BY r_id DESC LIMIT 0, 1";
+  $result = mysqli_query($conn, $sql) or die("Query failed");
+  $row = $result->fetch_assoc();
+  ?>
   <div id="review" class="bg-white">
     <div class="container">
       <div class="row">
         <div class="col-md-8 mx-auto d-flex flex-column align-items-center">
-          <p class="text-secondary">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-            eaque, quaerat quibusdam possimus vero reiciendis adipisci.
-            Ratione praesentium explicabo aspernatur. Vero suscipit quidem
-            officia explicabo, amet molestiae? Ducimus, dignissimos iste!
-          </p>
+          <p class="text-secondary"><?= $row['message']; ?></p>
 
           <a href="#" class="text-dark text-decoration-none">
             <div class="card px-3 py-2 single-review">
               <div class="d-flex gap-3">
                 <div class="user-img">
-                  <img src="image/home_02_slide_1.png" alt="" class="" width="60px" />
+                  <img src="admin/img/<?= $row['image']; ?>" alt="" class="" width="60px" />
                 </div>
                 <div class="user d-flex justify-content-center flex-column">
-                  <h2 class="fs-4 m-0">Wahid Hasib</h2>
-                  <p class="text-secondary m-0">Artist</p>
+                  <h2 class="fs-4 m-0"><?= $row['fname'] . " " . $row['lname']; ?></h2>
+                  <p class="text-secondary m-0">Customer</p>
                 </div>
               </div>
             </div>
