@@ -1,7 +1,8 @@
 <?php include "config.php";
 session_start();
+
 if(isset($_SESSION['username'])) {
-    header("Location: $hostname/admin/users.php");
+    header("Location: $hostname/admin/profile.php");
 }
 
 ?>
@@ -46,6 +47,7 @@ if(isset($_SESSION['username'])) {
                             $_SESSION['fname'] = $row['fname'];
 
                             $_SESSION['message'] = "Login successfully";
+                            header("Location: $hostname/admin/users.php");
                         }
                     } else { ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">

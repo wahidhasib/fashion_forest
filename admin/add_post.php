@@ -1,5 +1,11 @@
 <?php include "config.php";
-include "header.php"; ?>
+include "header.php";
+
+if ($_SESSION['role'] == 0) {
+    header("Location: $hostname/admin/");
+}
+
+?>
 <div class="container-fluid">
     <div class="row login-container justify-content-center align-items-center px-2">
         <div class="col-sm-10 col-md-7 col-lg-6 col-xxl-4 py-3 px-3 rounded-3 shadow-lg">

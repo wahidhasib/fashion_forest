@@ -1,4 +1,6 @@
-<?php include "config.php"; ?>
+<?php include "config.php";
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +14,7 @@
     <!-- css link -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/custom.css">
 </head>
 
 <body class="">
@@ -25,29 +28,34 @@
                 <div class="col-lg-8">
                     <nav class="navbar d-flex h-100 align-items-center justify-content-end">
                         <ul class="nav nav-tabs nav-justified w-100">
-                            <li class="nav-item">
-                                <a class="nav-link active fw-bolder fs-5" href="<?= $hostname; ?>/index.php">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link fw-bolder fs-5 text-secondary"
-                                    href="<?= $hostname; ?>/admin/users.php">Users</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link fw-bolder fs-5 text-secondary"
-                                    href="<?= $hostname; ?>/admin/post.php">Post</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link fw-bolder fs-5 text-secondary"
-                                    href="<?= $hostname; ?>/admin/category.php">Category</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link fw-bolder fs-5 text-secondary"
-                                    href="<?= $hostname; ?>/admin/basket.php">Basket</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link fw-bolder fs-5 text-secondary"
-                                    href="<?= $hostname; ?>/admin/order.php">Order</a>
-                            </li>
+                            <?php
+                            if ($_SESSION['role'] == 1) { ?>
+                                <li class="nav-item">
+                                    <a class="nav-link fw-bolder fs-5 text-secondary" href="<?= $hostname; ?>/index.php">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link fw-bolder fs-5 text-secondary"
+                                        href="<?= $hostname; ?>/admin/users.php">Users</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link fw-bolder fs-5 text-secondary"
+                                        href="<?= $hostname; ?>/admin/post.php">Post</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link fw-bolder fs-5 text-secondary"
+                                        href="<?= $hostname; ?>/admin/category.php">Category</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link fw-bolder fs-5 text-secondary"
+                                        href="<?= $hostname; ?>/admin/order.php">Order</a>
+                                </li>
+                            <?php }
+                            if ($_SESSION['role'] == 0) { ?>
+                                <li class="nav-item">
+                                    <a class="nav-link fw-bolder fs-5 text-secondary"
+                                        href="<?= $hostname; ?>/admin/basket.php">Basket</a>
+                                </li>
+                            <?php } ?>
                             <li class="nav-item">
                                 <a class="nav-link fw-bolder fs-5 text-secondary"
                                     href="<?= $hostname; ?>/admin/profile.php">Profile</a>
